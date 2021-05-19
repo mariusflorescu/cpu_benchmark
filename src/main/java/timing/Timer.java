@@ -4,10 +4,10 @@ public class Timer implements timing.ITimer {
 
 	private long elapsed = 0;
 	private long stored = 0;
-	private timing.TimerState state;
+	private TimerState state;
 
 	public Timer() {
-		state = timing.TimerState.Stopped;
+		state = TimerState.Stopped;
 	}
 
 	@Override
@@ -18,9 +18,9 @@ public class Timer implements timing.ITimer {
 
 	@Override
 	public long stop() {
-		if (state.equals(timing.TimerState.Running)) {
+		if (state.equals(TimerState.Running)) {
 			elapsed = System.nanoTime() - elapsed;
-			state = timing.TimerState.Stopped;
+			state = TimerState.Stopped;
 			stored += elapsed;
 
 			return stored;
@@ -31,7 +31,7 @@ public class Timer implements timing.ITimer {
 	@Override
 	public long pause() {
 		elapsed = System.nanoTime() - elapsed;
-		state = timing.TimerState.Paused;
+		state = TimerState.Paused;
 		stored += elapsed;
 
 		return stored;
@@ -39,7 +39,7 @@ public class Timer implements timing.ITimer {
 
 	@Override
 	public void resume() {
-		state = timing.TimerState.Running;
+		state = TimerState.Running;
 		elapsed = System.nanoTime();
 	}
 }
