@@ -11,8 +11,8 @@ public class CPUDigitsOfPIBench implements IBenchmark {
     public static BigDecimal denominator1 =  BigDecimal.ONE;
     public static BigDecimal denominator2 =  BigDecimal.ONE;
     public static BigDecimal term1 =  BigDecimal.ZERO;
-
     public static BigDecimal term2 =  BigDecimal.ZERO;
+
     @Override
     public void initialize(int size) {
         this.size = size;
@@ -55,7 +55,7 @@ public class CPUDigitsOfPIBench implements IBenchmark {
 
     @Override
     public void warmUp() {
-       for (int i = 1; i <= 1000; ++i) {
+        for (int i = 1; i <= 1000; ++i) {
             for (int j = 1; j <= 1000; ++j) {
                 for (int z = 1; z <= 1000; ++z){
                     CPUDigitsOfPIBench warm_up = new CPUDigitsOfPIBench();
@@ -63,7 +63,6 @@ public class CPUDigitsOfPIBench implements IBenchmark {
             }
 
         }
-        System.out.println("START! Warm-up done!");
     }
 
     @Override
