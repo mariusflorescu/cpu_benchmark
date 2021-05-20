@@ -45,9 +45,14 @@
                   <Font name="Berlin Sans FB" size="14.0" />
                </font>
             </Label>
-            <Label fx:id="best" layoutX="130.0" layoutY="560.0" prefHeight="40.0" prefWidth="700.0" text="Label" textFill="DARKSLATEGRAY">
+            <Label fx:id="score" layoutX="130.0" layoutY="530.0" prefHeight="40.0" prefWidth="700.0" text="Label" textFill="DARKSLATEGRAY">
                <font>
                   <Font name="Berlin Sans FB" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="best" layoutX="130.0" layoutY="560.0" prefHeight="40.0" prefWidth="700.0" text="Label" textFill="DARKSLATEGRAY">
+               <font>
+                  <Font name="Berlin Sans FB" size="16.0" />
                </font>
             </Label>
             <Label fx:id="warmupLabel" layoutX="270.0" layoutY="330.0" text="Warmup done" textFill="DARKSLATEGRAY">

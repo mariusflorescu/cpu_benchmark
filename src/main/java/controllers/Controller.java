@@ -17,6 +17,8 @@ public class Controller {
     Digits5 cpu4 = new Digits5();
     Cramer cpu5 = new Cramer();
 
+    double avgScore = 0.0;
+    int avg;
     long bestTime;
     String method;
 
@@ -48,11 +50,14 @@ public class Controller {
     public Label cramerLabel;
 
     @FXML
+    public Label score;
+
+    @FXML
     public Label best;
 
     public void warmup() throws InterruptedException {
-        for (int i = 1; i <= 10000; i++) {
-            for (int j = 1; j <= 10000; j++) {
+        for (int i = 1; i <= 100000; i++) {
+            for (int j = 1; j <= 100000; j++) {
                 CPUDigitsOfPIBench test = new CPUDigitsOfPIBench();
                 ConsoleLogger test2 = new ConsoleLogger();
                 Timer test3 = new Timer();
@@ -87,6 +92,7 @@ public class Controller {
             piLabel.setTextFill(Color.web("#ffffff",1));
             piLabel.setText("First Nilakantha CPU computation took " + stop + " nanoseconds to complete");
             bestTime = stop;
+            avgScore+=stop/Double.parseDouble(nrOfDigits.getText());
             method = "First Nilakantha";
 
             cpu2.initialize(Integer.parseInt(nrOfDigits.getText()));
@@ -95,6 +101,7 @@ public class Controller {
             stop = timer.stop();
             piLabel2.setTextFill(Color.web("#ffffff",1));
             piLabel2.setText("Second Nilakantha CPU computation took " + stop + " nanoseconds to complete");
+            avgScore+=stop/Double.parseDouble(nrOfDigits.getText());
             if(stop < bestTime){
                 bestTime = stop;
                 method = "Second Nilakantha";
@@ -117,6 +124,7 @@ public class Controller {
             stop = timer.stop();
             piLabel4.setTextFill(Color.web("#ffffff",1));
             piLabel4.setText("Arithmetic-Geometric mean CPU computation took " + stop + " nanoseconds to complete");
+            avgScore+=stop/Double.parseDouble(nrOfDigits.getText());
             if(stop < bestTime){
                 bestTime = stop;
                 method = "Arithmetic-Geometric mean";
@@ -128,14 +136,19 @@ public class Controller {
             stop = timer.stop();
             cramerLabel.setTextFill(Color.web("#ffffff",1));
             cramerLabel.setText("Cramer CPU computation took " + stop + " nanoseconds to complete");
+            avgScore+=stop/Double.parseDouble(nrOfDigits.getText());
             if(stop < bestTime){
                 bestTime = stop;
                 method = "Cramer";
             }
 
+            avgScore = avgScore/4.0;
+            avg = (int)Math.round(avgScore);
+            score.setTextFill(Color.web("#ffffff",1));
+            score.setText("Average score: " + avg + " points");
+
             best.setTextFill(Color.web("#ffffff",1));
             best.setText("The best method was " + method + " and it took " + bestTime + " ns to complete");
-
 
         }catch(InterruptedException e){
             throw new InterruptedException();
