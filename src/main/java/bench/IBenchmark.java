@@ -18,6 +18,11 @@ public interface IBenchmark {
     /**
      * Starts the actual benchmarking, optionally after initialize was called
      * Benchmarked call.
+     */
+
+    /**
+     * Starts the actual benchmarking, optionally after initialize was called
+     * Benchmarked call.
      *
      * @param options -> May pass a benchmark option defined by the benchmark class
      *               itself
