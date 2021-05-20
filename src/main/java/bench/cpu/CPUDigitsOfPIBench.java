@@ -41,7 +41,7 @@ public class CPUDigitsOfPIBench implements IBenchmark {
 
         pi = pi.add(new BigDecimal (3));
 
-        pi = pi.setScale(size, RoundingMode.HALF_EVEN);
+        pi = pi.setScale(size, BigDecimal.ROUND_HALF_UP);
         System.out.println(pi);
         pi =  BigDecimal.ZERO;
     }
@@ -63,6 +63,7 @@ public class CPUDigitsOfPIBench implements IBenchmark {
             }
 
         }
+        System.out.println("START! Warm-up done!");
     }
 
     @Override

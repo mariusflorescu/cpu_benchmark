@@ -1,5 +1,7 @@
 package main.java.logging;
 
+import main.java.timing.TimeUnit;
+
 public interface ILog {
 
 	/**

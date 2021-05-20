@@ -2,9 +2,13 @@ package main.java.bench.cpu;
 
 import main.java.bench.IBenchmark;
 
-public class Digits3 implements IBenchmark {
-    private static final int SCALE = 10000;
-    private static final int ARRINIT = 2000;
+
+import java.math.BigDecimal;
+import java.math.MathContext;
+import java.math.RoundingMode;
+
+
+public class Digits4 implements IBenchmark {
 
     int size;
 
@@ -17,28 +21,26 @@ public class Digits3 implements IBenchmark {
 
     @Override
     public void run() {
-
-        StringBuffer pi = new StringBuffer(100);
-        int[] arr = new int[size + 1];
-        int carry = 0;
-
-        for (int i = 0; i <= size; ++i)
-            arr[i] = ARRINIT;
-
-        for (int i = size; i > 0; i-= 14) {
-            int sum = 0;
-            for (int j = i; j > 0; --j) {
-                sum = sum * j + SCALE * arr[j];
-                arr[j] = sum % (j * 2 - 1);
-                sum /= j * 2 - 1;
+        size -= 1;
+        BigDecimal pi = new BigDecimal(3);
+        BigDecimal divisorBegin = new BigDecimal(2);
+        BigDecimal divisor;
+        BigDecimal one = new BigDecimal(1);
+        BigDecimal two = new BigDecimal(2);
+        BigDecimal four = new BigDecimal(4);
+        BigDecimal minusFour = new BigDecimal(-4);
+        MathContext mc = new MathContext(size);
+        for (long i = 0; i < size; ++i) {
+            divisor = one;
+            for(long j = 0; j < 3; ++j) {
+                divisor = divisor.multiply(new BigDecimal(j).add(divisorBegin, mc), mc);
             }
-
-            pi.append(String.format("%04d", carry + sum / SCALE));
-            carry = sum % SCALE;
-
+            pi = pi.add(i % 2 == 0 ? four.divide(divisor, mc) : minusFour.divide(divisor, mc), mc);
+            divisorBegin = divisorBegin.add(two, mc);
         }
         System.out.println(pi);
     }
+
     @Override
     public void run(Object option) {
     }
