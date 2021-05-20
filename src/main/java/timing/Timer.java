@@ -1,6 +1,6 @@
 package main.java.timing;
 
-public class Timer implements timing.ITimer {
+public class Timer implements ITimer {
 
 	private long elapsed = 0;
 	private long stored = 0;

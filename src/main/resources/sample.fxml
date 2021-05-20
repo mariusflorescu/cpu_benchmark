@@ -10,48 +10,63 @@
 <?import javafx.scene.text.Font?>
 
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="520.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.controllers.Controller">
    <left>
-      <AnchorPane prefHeight="520.0" prefWidth="752.0" style="-fx-background-color: #2F4F4F;" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #2F4F4F;" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutX="468.0" layoutY="242.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="113.0" style="-fx-background-color: #FFFFFF;" text="Run" textFill="DARKSLATEGRAY" />
-            <Label alignment="CENTER" layoutX="217.0" layoutY="14.0" prefHeight="61.0" prefWidth="267.0" text="CO Project" textFill="WHITE">
+            <Button onAction="#execute" layoutX="508.0" layoutY="242.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="113.0" style="-fx-background-color: #FFFFFF;" text="Run" textFill="DARKSLATEGRAY" />
+            <Label alignment="CENTER" layoutX="277.0" layoutY="14.0" prefHeight="61.0" prefWidth="267.0" text="CO Project" textFill="WHITE">
                <font>
                   <Font name="Forte" size="48.0" />
                </font>
             </Label>
-            <Label layoutX="275.0" layoutY="350.0" prefHeight="40.0" prefWidth="150.0" text="Label" textFill="DARKSLATEGRAY">
+            <Label fx:id="piLabel" layoutX="130.0" layoutY="360.0" prefHeight="40.0" prefWidth="700.0" text="Label" textFill="DARKSLATEGRAY">
                <font>
-                  <Font name="Berlin Sans FB Demi Bold" size="24.0" />
+                  <Font name="Berlin Sans FB Demi Bold" size="14.0" />
                </font>
             </Label>
-            <Label layoutX="276.0" layoutY="390.0" prefHeight="40.0" prefWidth="150.0" text="Label" textFill="DARKSLATEGRAY">
+            <Label fx:id="piLabel2" layoutX="130.0" layoutY="380.0" prefHeight="40.0" prefWidth="700.0" text="Label" textFill="DARKSLATEGRAY">
                <font>
-                  <Font name="Berlin Sans FB Demi Bold" size="24.0" />
+                  <Font name="Berlin Sans FB Demi Bold" size="14.0" />
                </font>
             </Label>
-            <Label layoutX="276.0" layoutY="430.0" prefHeight="40.0" prefWidth="150.0" text="Label" textFill="DARKSLATEGRAY">
+<!--            <Label fx:id="piLabel3" layoutX="130.0" layoutY="400.0" prefHeight="40.0" prefWidth="700.0" text="Label" textFill="DARKSLATEGRAY">-->
+<!--               <font>-->
+<!--                  <Font name="Berlin Sans FB" size="14.0" />-->
+<!--               </font>-->
+<!--            </Label>-->
+            <Label fx:id="piLabel4" layoutX="130.0" layoutY="400.0" prefHeight="40.0" prefWidth="700.0" text="Label" textFill="DARKSLATEGRAY">
+               <font>
+                  <Font name="Berlin Sans FB" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="cramerLabel" layoutX="130.0" layoutY="420.0" prefHeight="40.0" prefWidth="700.0" text="Label" textFill="DARKSLATEGRAY">
+               <font>
+                  <Font name="Berlin Sans FB" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="best" layoutX="130.0" layoutY="560.0" prefHeight="40.0" prefWidth="700.0" text="Label" textFill="DARKSLATEGRAY">
+               <font>
+                  <Font name="Berlin Sans FB" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="warmupLabel" layoutX="270.0" layoutY="330.0" text="Warmup done" textFill="DARKSLATEGRAY">
                <font>
                   <Font name="Berlin Sans FB" size="24.0" />
                </font>
             </Label>
-            <Label layoutX="278.0" layoutY="309.0" text="Warmup done" textFill="DARKSLATEGRAY">
-               <font>
-                  <Font name="Berlin Sans FB" size="24.0" />
-               </font>
-            </Label>
-            <ImageView fitHeight="82.0" fitWidth="104.0" layoutX="310.0" layoutY="109.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="82.0" fitWidth="104.0" layoutX="360.0" layoutY="109.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@pi.png" />
                </image>
             </ImageView>
-            <TextField layoutX="304.0" layoutY="249.0" prefHeight="31.0" prefWidth="95.0" />
-            <Label alignment="CENTER" layoutX="79.0" layoutY="236.0" prefHeight="57.0" prefWidth="199.0" text="Introduce number &#10;of digits&#10;&#10;" textAlignment="CENTER" textFill="WHITE">
+            <TextField fx:id="nrOfDigits" layoutX="374.0" layoutY="249.0" prefHeight="31.0" prefWidth="95.0" />
+            <Label alignment="CENTER" layoutX="149.0" layoutY="236.0" prefHeight="57.0" prefWidth="199.0" text="Introduce number &#10;of digits&#10;&#10;" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Berlin Sans FB Demi Bold" size="24.0" />
                </font>
             </Label>
-            <Label layoutX="278.0" layoutY="251.0" text=":" textFill="WHITE">
+            <Label layoutX="348.0" layoutY="251.0" text=":" textFill="WHITE">
                <font>
                   <Font name="Berlin Sans FB Demi Bold" size="24.0" />
                </font>

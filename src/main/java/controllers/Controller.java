@@ -3,31 +3,52 @@ package main.java.controllers;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.text.Text;
-import main.java.bench.IBenchmark;
-import main.java.bench.cpu.CPUDigitsOfPIBench;
+import javafx.scene.paint.Color;
+import main.java.bench.cpu.*;
 import main.java.logging.ConsoleLogger;
-import main.java.logging.ILog;
-import main.java.timing.TimeUnit;
 import main.java.timing.Timer;
-import timing.ITimer;
+
 
 public class Controller {
+    Timer timer = new Timer();
+    CPUDigitsOfPIBench cpu1 = new CPUDigitsOfPIBench();
+    Digits4 cpu2 = new Digits4();
+    Digits3 cpu3 = new Digits3();
+    Digits5 cpu4 = new Digits5();
+    Cramer cpu5 = new Cramer();
+
+    long bestTime;
+    String method;
 
     @FXML
     public TextField nrOfDigits;
 
     @FXML
-    public Text warmup;
+    public Label warmupLabel;
 
     @FXML
-    public Text time;
+    public TextField time;
 
     @FXML
     public Label stringErrorLabel;
 
     @FXML
     public Label piLabel;
+
+    @FXML
+    public Label piLabel2;
+
+    @FXML
+    public Label piLabel3;
+
+    @FXML
+    public Label piLabel4;
+
+    @FXML
+    public Label cramerLabel;
+
+    @FXML
+    public Label best;
 
     public void warmup() throws InterruptedException {
         for (int i = 1; i <= 10000; i++) {
@@ -39,9 +60,8 @@ public class Controller {
 
         }
 
-        warmup.setText("Warm-Up done! Let's GO!");
-
-
+        warmupLabel.setText("Warm-Up done! Let's GO!");
+        warmupLabel.setTextFill(Color.web("#ffffff", 1));
     }
 
     public static boolean isNumeric(String str) {
@@ -55,24 +75,71 @@ public class Controller {
 
 
     @FXML
-    public void getDigitsOfPi() throws InterruptedException {
+    public void execute() throws InterruptedException {
+        try{
+            long stop;
+            warmup();
 
-//        ILog log = new ConsoleLogger();
-//        IBenchmark bench = new CPUDigitsOfPIBench();
-//        ITimer timer = new Timer();
-//        TimeUnit timeUnit = TimeUnit.NANO;
-//
-//        bench.warmUp();
-//
-//        bench.initialize(10000);
-//        for(int i=0;i<1;++i){
+            cpu1.initialize(Integer.parseInt(nrOfDigits.getText()));
+            timer.start();
+            cpu1.run();
+            stop = timer.stop();
+            piLabel.setTextFill(Color.web("#ffffff",1));
+            piLabel.setText("First Nilakantha CPU computation took " + stop + " nanoseconds to complete");
+            bestTime = stop;
+            method = "First Nilakantha";
+
+            cpu2.initialize(Integer.parseInt(nrOfDigits.getText()));
+            timer.start();
+            cpu2.run();
+            stop = timer.stop();
+            piLabel2.setTextFill(Color.web("#ffffff",1));
+            piLabel2.setText("Second Nilakantha CPU computation took " + stop + " nanoseconds to complete");
+            if(stop < bestTime){
+                bestTime = stop;
+                method = "Second Nilakantha";
+            }
+
+//            cpu3.initialize(Integer.parseInt(nrOfDigits.getText()));
 //            timer.start();
-//            bench.run();
-//            System.out.println("Elapsed time: " + timer.stop());
-//        }
+//            cpu3.run();
+//            stop = timer.stop();
+//            piLabel3.setTextFill(Color.web("#ffffff",1));
+//            piLabel3.setText("Spigot CPU computation took " + stop + " nanoseconds to complete");
+//            if(stop < bestTime){
+//                bestTime = stop;
+//                method = "Spigot";
+//            }
+
+            cpu4.initialize(Integer.parseInt(nrOfDigits.getText()));
+            timer.start();
+            cpu4.run();
+            stop = timer.stop();
+            piLabel4.setTextFill(Color.web("#ffffff",1));
+            piLabel4.setText("Arithmetic-Geometric mean CPU computation took " + stop + " nanoseconds to complete");
+            if(stop < bestTime){
+                bestTime = stop;
+                method = "Arithmetic-Geometric mean";
+            }
+
+            cpu5.initialize(Integer.parseInt(nrOfDigits.getText()));
+            timer.start();
+            cpu5.run();
+            stop = timer.stop();
+            cramerLabel.setTextFill(Color.web("#ffffff",1));
+            cramerLabel.setText("Cramer CPU computation took " + stop + " nanoseconds to complete");
+            if(stop < bestTime){
+                bestTime = stop;
+                method = "Cramer";
+            }
+
+            best.setTextFill(Color.web("#ffffff",1));
+            best.setText("The best method was " + method + " and it took " + bestTime + " ns to complete");
 
 
-
+        }catch(InterruptedException e){
+            throw new InterruptedException();
+        }
 
     }
 }

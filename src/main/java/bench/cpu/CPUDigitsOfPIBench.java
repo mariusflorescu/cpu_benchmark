@@ -42,7 +42,6 @@ public class CPUDigitsOfPIBench implements IBenchmark {
         pi = pi.add(new BigDecimal (3));
 
         pi = pi.setScale(size, BigDecimal.ROUND_HALF_UP);
-        System.out.println(pi);
         pi =  BigDecimal.ZERO;
     }
     @Override

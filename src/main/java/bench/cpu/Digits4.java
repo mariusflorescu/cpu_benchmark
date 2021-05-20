@@ -38,7 +38,6 @@ public class Digits4 implements IBenchmark {
             pi = pi.add(i % 2 == 0 ? four.divide(divisor, mc) : minusFour.divide(divisor, mc), mc);
             divisorBegin = divisorBegin.add(two, mc);
         }
-        System.out.println(pi);
     }
 
     @Override
