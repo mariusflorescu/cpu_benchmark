@@ -2,6 +2,8 @@ package main.java.bench.cpu;
 
 import main.java.bench.IBenchmark;
 
+
+
 public class Cramer implements IBenchmark {
     int size;
     private double[][] mat = {

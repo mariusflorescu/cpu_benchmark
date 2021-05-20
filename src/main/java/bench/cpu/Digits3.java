@@ -37,7 +37,6 @@ public class Digits3 implements IBenchmark {
             carry = sum % SCALE;
 
         }
-        System.out.println(pi);
     }
     @Override
     public void run(Object option) {

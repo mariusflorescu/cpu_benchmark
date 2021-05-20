@@ -1,4 +1,4 @@
-package timing;
+package main.java.timing;
 
 public interface ITimer {
 

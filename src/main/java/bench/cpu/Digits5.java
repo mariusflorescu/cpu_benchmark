@@ -17,9 +17,10 @@ public class Digits5 implements IBenchmark {
     @Override
     public void initialize(int size) {
         this.size = size;
+        con1024 = new MathContext(size);
     }
 
-    private static final  MathContext con1024 = new MathContext(1024);
+    private static MathContext con1024;
     private static final  BigDecimal bigTwo = new BigDecimal(2);
     private static final BigDecimal bigFour = new BigDecimal(4);
 
@@ -48,7 +49,6 @@ public class Digits5 implements IBenchmark {
             sum = sum.add(a.multiply(a).subtract(g.multiply(g)).multiply(pow));
         }
         BigDecimal pi = bigFour.multiply(a.multiply(a)).divide(BigDecimal.ONE.subtract(sum), con1024);
-        System.out.println(pi);
     }
 
     @Override
